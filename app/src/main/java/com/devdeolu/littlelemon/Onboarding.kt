@@ -2,27 +2,33 @@ package com.devdeolu.littlelemon
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.interaction.Interaction
-import androidx.compose.foundation.interaction.InteractionSource
-import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.gestures.ScrollableState
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -36,7 +42,10 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun Onboarding() {
-    Column {
+    Column (modifier = Modifier
+        .fillMaxSize()
+        .verticalScroll(rememberScrollState())
+    ){
         Header()
         UserInfo()
     }
@@ -60,6 +69,10 @@ fun Header(){
 
 @Composable
 fun UserInfo(){
+    var firstName by remember { mutableStateOf("") }
+    var lastName by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+
     Column {
         Text(text = "Let's get to know you",
             textAlign = TextAlign.Center,
@@ -80,20 +93,20 @@ fun UserInfo(){
                 .padding(start = 12.5.dp, top = 40.dp, bottom = 20.dp)
         )
         TextFields(
-            value = "",
-            onValueChange = {},
+            value = firstName,
+            onValueChange = {firstName = it},
             label = "First Name",
             keyboardType = KeyboardType.Text
         )
         TextFields(
-            value = "",
-            onValueChange = {},
+            value = lastName,
+            onValueChange = {lastName = it},
             label = "Last Name",
             keyboardType = KeyboardType.Text
         )
         TextFields(
-            value = "",
-            onValueChange = {},
+            value = email ,
+            onValueChange = {email = it},
             label = "Email",
             keyboardType = KeyboardType.Email
         )
