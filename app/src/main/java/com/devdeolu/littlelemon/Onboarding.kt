@@ -6,6 +6,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -120,7 +121,9 @@ fun UserInfo(navController: NavHostController) {
             label = "Email",
             keyboardType = KeyboardType.Email
         )
-        MasterButton(text = "Register",
+
+        MasterButton(
+            text = "Register",
             onClick = {
                 if (!firstName.isBlank() && !lastName.isBlank() && !email.isBlank()) {
                     editor.putString("firstName", firstName)
@@ -190,7 +193,8 @@ fun MasterButton(
         shape = RoundedCornerShape(corner = cornerSize),
         modifier = modifier
             .fillMaxWidth()
-            .padding(start = 15.dp, top = 60.dp, bottom = 20.dp, end = 12.5.dp))
+            .padding(start = 15.dp, top = 200.dp, end = 12.5.dp),
+        )
     {
         Text(
             text = text,
