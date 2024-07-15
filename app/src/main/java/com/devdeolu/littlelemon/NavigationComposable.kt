@@ -24,7 +24,7 @@ fun AppNavigation(){
             Home(navController)
         }
         composable(Profile.route) {
-            Profile()
+            Profile(navController)
         }
     }
 }
