@@ -6,7 +6,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -125,7 +124,7 @@ fun UserInfo(navController: NavHostController) {
         MasterButton(
             text = "Register",
             onClick = {
-                if (!firstName.isBlank() && !lastName.isBlank() && !email.isBlank()) {
+                if (firstName.isNotBlank() && lastName.isNotBlank() && email.isNotBlank()) {
                     editor.putString("firstName", firstName)
                     editor.putString("lastName", lastName)
                     editor.putString("email", email)
