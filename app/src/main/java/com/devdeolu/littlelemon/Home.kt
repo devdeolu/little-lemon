@@ -88,7 +88,8 @@ fun HomeHeader(navController: NavHostController){
             Image(painter = painterResource(id = R.mipmap.logo),
                 alignment = Alignment.Center,
                 contentDescription = "Little Lemon Logo",
-                modifier = Modifier.size(150.dp)
+                modifier = Modifier
+                    .size(150.dp)
                     .offset(x = 10.dp, y = 10.dp)
             )
             Image(painter = painterResource(id = R.mipmap.sarah),
@@ -97,7 +98,7 @@ fun HomeHeader(navController: NavHostController){
                     .offset(x = 80.dp, y = 10.dp)
                     .height(40.dp)
                     .clip(shape = RoundedCornerShape(50.dp))
-                    .clickable(onClick = { navController.navigate("Profile")})
+                    .clickable(onClick = { navController.navigate("Profile") })
 
             )
         }
@@ -206,7 +207,7 @@ fun MenuItems(items: List<MenuItemRoom>){
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 16.dp, vertical = 16.dp),
+            .padding(horizontal = 16.dp),
     ) {
         items(
             items = items,
@@ -219,7 +220,7 @@ fun MenuItems(items: List<MenuItemRoom>){
                             fontFamily = karla,
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            modifier = Modifier.padding(top = 8.dp))
+                            )
 
                         Row(
                             modifier = Modifier.fillMaxWidth(),
@@ -237,9 +238,6 @@ fun MenuItems(items: List<MenuItemRoom>){
                                     overflow = TextOverflow.Ellipsis
                                 )
                                 Text(
-                                    modifier = Modifier
-                                        .padding(0.dp),
-                                    textAlign = TextAlign.Right,
                                     text = "$" + "%.2f".format(menuItem.price),
                                     fontFamily = karla,
                                     fontSize = 16.sp,
@@ -271,33 +269,43 @@ fun CategoryButtons(
     selectedCategory: String,
     onCategorySelected: (String) -> Unit
 ){
-    LazyRow(
-        horizontalArrangement = Arrangement.SpaceBetween,
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 16.dp)
-    ) {
-        items(
-            items= categories,
-            itemContent = { category ->
-                val isSelected = category == selectedCategory
-                Button( onClick = { onCategorySelected(category) },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = if (isSelected)
-                            Color(0xFF495E57) else Color(0xFFEDEFEE),
-                        contentColor = if (isSelected)
-                            Color(0xFFFFFFFF)else Color(0xFF495E57))
-                ) {
-                    Text(text = category,
-                        fontFamily = karla,
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                    )
+    Column (modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 16.dp, vertical = 16.dp)) {
+        Text(text = "ORDER FOR DELIVERY!",
+            fontFamily = karla,
+            fontSize = 20.sp,
+            fontWeight = FontWeight.ExtraBold,
+            modifier = Modifier.padding(bottom = 4.dp))
+        LazyRow(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 16.dp)
+        ) {
+            items(
+                items= categories,
+                itemContent = { category ->
+                    val isSelected = category == selectedCategory
+                    Button( onClick = { onCategorySelected(category) },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = if (isSelected)
+                                Color(0xFF495E57) else Color(0xFFEDEFEE),
+                            contentColor = if (isSelected)
+                                Color(0xFFFFFFFF)else Color(0xFF495E57))
+                    ) {
+                        Text(text = category,
+                            fontFamily = karla,
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.ExtraBold,
+                        )
+                    }
                 }
-            }
-        )
+            )
+        }
+        HorizontalDivider(thickness = 1.dp)
     }
-    HorizontalDivider(thickness = 1.dp)
+
 }
 
 @Preview
