@@ -40,6 +40,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.devdeolu.littlelemon.ui.theme.karla
+import com.devdeolu.littlelemon.ui.theme.markazi
 
 @Composable
 fun Onboarding(navController: NavHostController) {
@@ -87,18 +89,18 @@ fun UserInfo(navController: NavHostController) {
         Text(text = "Let's get to know you",
             textAlign = TextAlign.Center,
             color = Color.White,
-            fontSize = 24.sp,
+            fontSize = 40.sp,
             fontWeight = FontWeight.Normal,
-            fontFamily = FontFamily.Serif,
+            fontFamily = markazi,
             modifier = Modifier
                 .background(color = Color(0xFF495E57))
                 .fillMaxWidth()
                 .padding(40.dp)
         )
         Text(text = "Personal Information",
-            fontSize = 16.sp,
-            fontWeight = FontWeight.SemiBold,
-            fontFamily = FontFamily.Serif,
+            fontSize = 32.sp,
+            fontWeight = FontWeight.Normal,
+            fontFamily = markazi,
             modifier = Modifier
                 .padding(start = 12.5.dp, top = 40.dp, bottom = 20.dp)
         )
@@ -154,14 +156,14 @@ fun TextFields(
     OutlinedTextField(value = value,
         onValueChange = onValueChange,
         label = { Text(text = label,
-            fontSize = 16.sp,
-            fontFamily = FontFamily.Serif,
+            fontSize = 18.sp,
+            fontFamily = karla,
             fontWeight = FontWeight.Normal,
             color = Color(0xFF495E57)) },
         textStyle = TextStyle(
             color = Color(0xFF495E57),
-            fontSize = 16.sp,
-            fontFamily = FontFamily.Serif,
+            fontSize = 18.sp,
+            fontFamily = karla,
             fontWeight = FontWeight.Normal),
         modifier = Modifier
             .fillMaxWidth()
@@ -179,8 +181,8 @@ fun MasterButton(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color(0xFFF4CE14),
     contentColor: Color = Color.Black,
-    fontSize: Int = 16,
-    fontFamily: FontFamily = FontFamily.Serif,
+    fontSize: Int = 18,
+    fontFamily: FontFamily = karla,
     fontWeight: FontWeight = FontWeight.SemiBold,
     cornerSize: CornerSize = CornerSize(8.dp)
 ) {
