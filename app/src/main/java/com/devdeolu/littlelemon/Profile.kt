@@ -18,9 +18,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun Profile(navController: NavHostController){
@@ -100,8 +102,9 @@ fun ProfileInfoItem(label: String, value: String) {
     }
 }
 
-//@Preview
-//@Composable
-//fun PreviewProfileScreen() {
-//    Profile(navController =  )
-//}
+@Preview
+@Composable
+fun PreviewProfileScreen() {
+    val fakeNavController = rememberNavController()
+    Profile(navController =  fakeNavController)
+}
